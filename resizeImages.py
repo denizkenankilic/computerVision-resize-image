@@ -16,12 +16,12 @@ if not os.path.exists(resized_images_path):
 
 dirs = os.listdir(images_path)
 
-def resize(images_path, resized_images_path, image_format):
+def resize(images_path, resized_images_path, width, height, image_format):
     for item in dirs:
         if os.path.isfile(images_path+ '\\' + item):
             im = Image.open(images_path + '\\' + item)
             f, e = os.path.splitext(item)
-            imResize = im.resize((512,512), Image.ANTIALIAS)
+            imResize = im.resize((width, height), Image.ANTIALIAS)
             if image_format == "jpeg":
                 imResize.save(resized_images_path + '\\' + item + ' _resized.jpg', 'JPEG')
             elif image_format == "bmp":
